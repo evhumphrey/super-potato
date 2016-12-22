@@ -45,7 +45,7 @@
         <h2 class="text-center">Already Bought</h2>
         <ol class="list-group">
           <li data-ng-repeat="item in boughtList.items" class="list-group-item disabled">
-            <span class="glyphicon glyphicon-ok"></span> {{item.quantity}} {{item.name}}
+            <span class="glyphicon glyphicon-ok"></span> Bought {{item.quantity}} {{item.name}}
           </li>
           <li ng-if="boughtList.items.length == 0"
               class="list-group-item list-group-item-info text-center">
