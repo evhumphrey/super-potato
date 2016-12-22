@@ -32,7 +32,7 @@
             </button>
             Buy {{item.quantity}} {{item.name}}
           </li>
-          <li ng-if="buyList.items.length == 0"
+          <li data-ng-if="buyList.items.length == 0"
               class="list-group-item list-group-item-success text-center">
               <span class="glyphicon glyphicon-ok"></span> Everything is bought!
           </li>
@@ -47,7 +47,7 @@
           <li data-ng-repeat="item in boughtList.items" class="list-group-item disabled">
             <span class="glyphicon glyphicon-ok"></span> Bought {{item.quantity}} {{item.name}}
           </li>
-          <li ng-if="boughtList.items.length == 0"
+          <li data-ng-if="boughtList.items.length == 0"
               class="list-group-item list-group-item-info text-center">
             <span class="glyphicon glyphicon-info-sign"></span> Nothing bought yet
           </li>
