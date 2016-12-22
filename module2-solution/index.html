@@ -6,40 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Shopping List Check Off</title>
+    <style>
+      body {
+        font-size: 1.8em;
+      }
+    </style>
+    <title>Shopping List</title>
   </head>
 
   <body>
     <div class="container">
-      <h1 class="text-center">Shopping List Check Off</h1>
+      <h1 class="page-header text-center">Shopping List</h1>
+      <div class="row">
 
-      <div data-ng-controller="ToBuyController as buyList">
-        <h2>To Buy</h2>
+
+      <div data-ng-controller="ToBuyController as buyList"
+           class="col-sm-6">
+        <h2 class="text-center">To Buy</h2>
         {{buyList.testValue}}
-        <ol>
-          <li data-ng-repeat="item in buyList.items">
+        <ol class="list-group">
+          <li data-ng-repeat="item in buyList.items" class="list-group-item">
+            <button class="btn btn-primary"
+                    data-ng-click="buyList.checkOffItem($index)">
+                    Bought
+            </button>
             Buy {{item.quantity}} {{item.name}}
-            <button class="btn btn-primary" data-ng-click="buyList.checkOffItem($index)">Bought</button>
           </li>
-          <p ng-if="buyList.items.length == 0">Everything is bought!</p>
+          <li ng-if="buyList.items.length == 0"
+              class="list-group-item list-group-item-success text-center">
+              <span class="glyphicon glyphicon-ok"></span> Everything is bought!
+          </li>
         </ol>
       </div>
 
 
-      <div data-ng-controller="AlreadyBoughtController as boughtList">
-        <h2>Bought</h2>
-        <ol>
-          <li data-ng-repeat="item in boughtList.items">
-            {{item.quantity}} {{item.name}}
+      <div data-ng-controller="AlreadyBoughtController as boughtList"
+           class="col-sm-6">
+        <h2 class="text-center">Already Bought</h2>
+        <ol class="list-group">
+          <li data-ng-repeat="item in boughtList.items" class="list-group-item disabled">
+            <span class="glyphicon glyphicon-ok"></span> {{item.quantity}} {{item.name}}
+          </li>
+          <li ng-if="boughtList.items.length == 0"
+              class="list-group-item list-group-item-info text-center">
+            <span class="glyphicon glyphicon-info-sign"></span> Nothing bought yet
           </li>
         </ol>
-        <p ng-if="boughtList.items.length == 0">Nothing bought yet</p>
       </div>
+
+
+    </div> <!-- end bootstrap .row -->
 
     </div> <!-- end bootstrap .container -->
 
     <script src="js/angular.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/app.min.js"></script>
   </body>
 
 </html>
